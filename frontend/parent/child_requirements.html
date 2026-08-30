@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Requirements - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <span class="badge bg-primary-light text-primary d-none d-sm-inline-flex align-items-center gap-1 px-3 py-2 rounded-pill">
+          <i class="bi bi-person-heart"></i> Parent Portal
+        </span>
+
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jessica Miller" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Jessica Miller</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="child_requirements.html"><i class="bi bi-card-checklist me-2"></i>Child Preferences</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Main Menu</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="profile.html" class="nav-item"><i class="bi bi-person-lines-fill"></i> Parent Profile</a>
+      <a href="child_requirements.html" class="nav-item active"><i class="bi bi-clipboard-heart"></i> Child Requirements</a>
+      <a href="search.html" class="nav-item"><i class="bi bi-search"></i> Caregiver Search</a>
+      <a href="recommendations.html" class="nav-item"><i class="bi bi-stars text-warning"></i> AI Recommendations</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-4 mb-2">Bookings & Care</div>
+      <a href="my_bookings.html" class="nav-item"><i class="bi bi-calendar2-check"></i> My Bookings</a>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Reviews & Ratings</a>
+      <a href="chatbot.html" class="nav-item"><i class="bi bi-robot text-primary"></i> 24/7 AI Chatbot</a>
+
+      <div class="mt-auto pt-4 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0 max-w-900">
+        
+        <!-- Header Card -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+            <div>
+              <span class="badge bg-primary-light text-primary fw-bold px-3 py-1 rounded-pill mb-1">AI Recommendation Input</span>
+              <h3 class="fw-bold mb-1">Child Requirements & Preferences</h3>
+              <p class="text-muted small mb-0">These details are processed by our recommendation engine to rank the most compatible caregivers.</p>
+            </div>
+            <button class="btn btn-outline-primary btn-sm" onclick="showToast('Add Child', 'Create another child profile modal.', 'info')">
+              <i class="bi bi-plus-circle me-1"></i>Add Another Child
+            </button>
+          </div>
+
+          <!-- Child Profile Tabs -->
+          <ul class="nav nav-pills mt-3 pt-3 border-top gap-2">
+            <li class="nav-item">
+              <button class="nav-link active btn-sm fw-bold px-3" type="button"><i class="bi bi-person-fill me-1"></i>Liam (2 yrs, Toddler)</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn-sm fw-bold px-3 btn-light text-muted" type="button"><i class="bi bi-person-plus me-1"></i>+ New Profile</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Requirements Form -->
+        <div class="carenest-card p-4 p-md-5 bg-white">
+          <form onsubmit="handleSaveRequirements(event)">
+            
+            <!-- Basic Details -->
+            <h5 class="fw-bold border-bottom pb-2 mb-3"><i class="bi bi-person-heart me-2 text-primary"></i>Child Information</h5>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Child Name / Nickname</label>
+                <input type="text" class="form-control" value="Liam" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Age Category</label>
+                <select class="form-select">
+                  <option>Infant (0 - 12 Months)</option>
+                  <option selected>Toddler (1 - 3 Years)</option>
+                  <option>Preschooler (3 - 5 Years)</option>
+                  <option>School Age (6+ Years)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Special Needs & Health Protocols -->
+            <h5 class="fw-bold border-bottom pb-2 mb-3"><i class="bi bi-heart-pulse-fill me-2 text-danger"></i>Special Needs & Health Considerations</h5>
+            <div class="row g-3 mb-3">
+              <div class="col-12">
+                <label class="form-label mb-2">Check all that apply:</label>
+                <div class="row g-2">
+                  <div class="col-sm-6">
+                    <div class="form-check p-2 border rounded-3">
+                      <input class="form-check-input ms-1 me-2" type="checkbox" id="peanutAllergy" checked>
+                      <label class="form-check-label small fw-semibold" for="peanutAllergy">Peanut / Food Allergies</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check p-2 border rounded-3">
+                      <input class="form-check-input ms-1 me-2" type="checkbox" id="autismSupport">
+                      <label class="form-check-label small fw-semibold" for="autismSupport">Autism Spectrum / Sensory Needs</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check p-2 border rounded-3">
+                      <input class="form-check-input ms-1 me-2" type="checkbox" id="asthmaCare">
+                      <label class="form-check-label small fw-semibold" for="asthmaCare">Asthma / Inhaler Protocol</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check p-2 border rounded-3">
+                      <input class="form-check-input ms-1 me-2" type="checkbox" id="speechTherapy">
+                      <label class="form-check-label small fw-semibold" for="speechTherapy">Speech & Developmental Support</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Special Instructions / Medication Details</label>
+                <textarea class="form-control" rows="2" placeholder="e.g. EpiPen kept in kitchen cabinet. Liam is allergic to peanuts and tree nuts."></textarea>
+              </div>
+            </div>
+
+            <!-- Required Caregiver Skills & Languages -->
+            <h5 class="fw-bold border-bottom pb-2 my-4 text-dark"><i class="bi bi-award-fill me-2 text-warning"></i>Required Caregiver Skills & Languages</h5>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Mandatory Certifications</label>
+                <div class="d-flex flex-column gap-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cprMandatory" checked>
+                    <label class="form-check-label small" for="cprMandatory">Pediatric CPR & First Aid Certified</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="earlyEdu" checked>
+                    <label class="form-check-label small" for="earlyEdu">Early Childhood Education Background</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pottyTraining">
+                    <label class="form-check-label small" for="pottyTraining">Potty Training Experience</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Language Preference</label>
+                <select class="form-select mb-2">
+                  <option selected>English</option>
+                  <option>English & Spanish (Bilingual)</option>
+                  <option>English & French</option>
+                  <option>English & Mandarin</option>
+                </select>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="creativePlay" checked>
+                  <label class="form-check-label small" for="creativePlay">Arts, Crafts & Outdoor Activities</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Schedule & Budget Constraints -->
+            <h5 class="fw-bold border-bottom pb-2 my-4 text-dark"><i class="bi bi-sliders me-2 text-primary"></i>Schedule & Budget Constraints</h5>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Typical Schedule Needed</label>
+                <select class="form-select">
+                  <option selected>Part-Time (Morning slots, 3-4 days/week)</option>
+                  <option>Full-Time Nanny (Mon-Fri, 9am - 5pm)</option>
+                  <option>Weekend & Date Night Care</option>
+                  <option>Emergency / On-Call Babysitter</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label">Max Hourly Rate</label>
+                  <span class="fw-bold text-primary" id="budgetValue">$35/hr</span>
+                </div>
+                <input type="range" class="form-range mt-2" id="budgetRange" min="15" max="80" value="35">
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-end gap-3 pt-3 border-top">
+              <a href="dashboard.html" class="btn btn-outline-secondary px-4">Cancel</a>
+              <button type="submit" class="btn btn-primary px-4 fw-bold shadow-sm">
+                <i class="bi bi-stars me-1"></i>Save & Calculate AI Matches
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Chatbot Launcher -->
+  <a href="chatbot.html" class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; z-index: 1050;" title="Ask CareNest AI Assistant">
+    <i class="bi bi-chat-dots-fill fs-4"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+
+  <script>
+    function handleSaveRequirements(e) {
+      e.preventDefault();
+      showToast('Requirements Saved', 'Recalculating AI matches for Liam...', 'success');
+      setTimeout(() => {
+        window.location.href = 'recommendations.html';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
