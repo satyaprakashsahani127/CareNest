@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24/7 AI Childcare Assistant - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .chat-box {
+      height: 480px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.25rem;
+      background-color: #f8fafc;
+      border-radius: var(--radius-md);
+    }
+    .chat-bubble {
+      max-width: 80%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 16px;
+      font-size: 0.925rem;
+      line-height: 1.5;
+    }
+    .chat-bubble-bot {
+      background-color: #ffffff;
+      color: var(--dark-soft);
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chat-bubble-user {
+      background-color: var(--primary);
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .typing-indicator {
+      display: none;
+      align-self: flex-start;
+      background: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <span class="badge bg-primary-light text-primary d-none d-sm-inline-flex align-items-center gap-1 px-3 py-2 rounded-pill">
+          <i class="bi bi-person-heart"></i> Parent Portal
+        </span>
+
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jessica Miller" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Jessica Miller</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="child_requirements.html"><i class="bi bi-card-checklist me-2"></i>Child Preferences</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Main Menu</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="profile.html" class="nav-item"><i class="bi bi-person-lines-fill"></i> Parent Profile</a>
+      <a href="child_requirements.html" class="nav-item"><i class="bi bi-clipboard-heart"></i> Child Requirements</a>
+      <a href="search.html" class="nav-item"><i class="bi bi-search"></i> Caregiver Search</a>
+      <a href="recommendations.html" class="nav-item"><i class="bi bi-stars text-warning"></i> AI Recommendations</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-4 mb-2">Bookings & Care</div>
+      <a href="my_bookings.html" class="nav-item"><i class="bi bi-calendar2-check"></i> My Bookings</a>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Reviews & Ratings</a>
+      <a href="chatbot.html" class="nav-item active"><i class="bi bi-robot text-primary"></i> 24/7 AI Chatbot</a>
+
+      <div class="mt-auto pt-4 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0 max-w-1000">
+        
+        <div class="row g-4">
+          
+          <!-- Chat Window (Left Column) -->
+          <div class="col-lg-8">
+            <div class="carenest-card p-4 bg-white shadow-sm d-flex flex-column h-100">
+              
+              <!-- Chat Header -->
+              <div class="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="stat-icon bg-primary-light text-primary rounded-circle" style="width: 46px; height: 46px;">
+                    <i class="bi bi-robot fs-4"></i>
+                  </div>
+                  <div>
+                    <h5 class="fw-bold mb-0">CareNest AI Assistant</h5>
+                    <span class="text-success small fw-semibold"><i class="bi bi-dot"></i> Online & Ready 24/7</span>
+                  </div>
+                </div>
+                <button class="btn btn-outline-secondary btn-sm" onclick="clearChat()">
+                  <i class="bi bi-arrow-counterclockwise me-1"></i>Clear Chat
+                </button>
+              </div>
+
+              <!-- Quick Suggestion Prompt Chips -->
+              <div class="mb-3">
+                <span class="text-muted small fw-bold d-block mb-2">Suggested Questions:</span>
+                <div class="d-flex flex-wrap gap-1">
+                  <button class="btn btn-sm btn-light border rounded-pill small" onclick="sendPrompt('How does CareNest verify caregiver criminal backgrounds?')">
+                    🛡️ How are caregivers verified?
+                  </button>
+                  <button class="btn btn-sm btn-light border rounded-pill small" onclick="sendPrompt('How does the AI recommendation match score work?')">
+                    ⭐ How does AI matching work?
+                  </button>
+                  <button class="btn btn-sm btn-light border rounded-pill small" onclick="sendPrompt('What should I prepare for a first-time babysitter?')">
+                    📋 First-time babysitting checklist
+                  </button>
+                </div>
+              </div>
+
+              <!-- Chat Message Scroll Container -->
+              <div class="chat-box mb-3" id="chatFeed">
+                
+                <!-- Bot Intro Message -->
+                <div class="chat-bubble chat-bubble-bot">
+                  <p class="mb-1 fw-semibold text-primary"><i class="bi bi-robot me-1"></i>CareNest AI</p>
+                  <p class="mb-0">Hello Jessica! I am your 24/7 CareNest Assistant. Ask me anything about caregiver background checks, matching recommendations for Liam, or booking policies!</p>
+                </div>
+
+                <!-- Sample Past Interaction -->
+                <div class="chat-bubble chat-bubble-user">
+                  How does CareNest ensure child safety during bookings?
+                </div>
+
+                <div class="chat-bubble chat-bubble-bot">
+                  <p class="mb-1 fw-semibold text-primary"><i class="bi bi-robot me-1"></i>CareNest AI</p>
+                  <p class="mb-2">We prioritize safety through a strict 4-tier security pipeline:</p>
+                  <ul class="mb-2 ps-3 small">
+                    <li><strong>ID & Criminal Background Screening:</strong> 100% ID clearance required before activation.</li>
+                    <li><strong>Pediatric CPR & Medical Validation:</strong> Certifications verified by admins.</li>
+                    <li><strong>Secure Payments & Guarantee:</strong> Funds held securely until service is completed.</li>
+                    <li><strong>Fake Review Prevention:</strong> Reviews NLP-verified for authenticity.</li>
+                  </ul>
+                  <p class="mb-0 small text-muted">Need to check a caregiver? Visit our <a href="search.html" class="text-primary fw-bold">Caregiver Directory</a>.</p>
+                </div>
+
+                <!-- Typing indicator placeholder -->
+                <div class="typing-indicator" id="typingIndicator">
+                  <i class="bi bi-three-dots"></i> CareNest AI is thinking...
+                </div>
+
+              </div>
+
+              <!-- Chat Input Bar -->
+              <form onsubmit="handleSendMessage(event)" class="mt-auto">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="chatInput" placeholder="Type your childcare question here..." required autocomplete="off">
+                  <button class="btn btn-primary px-4 fw-bold" type="submit">
+                    <i class="bi bi-send-fill me-1"></i>Send
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+          <!-- Knowledge Base & Support Channels (Right Column) -->
+          <div class="col-lg-4">
+            
+            <!-- Quick Knowledge Base Cards -->
+            <div class="carenest-card p-4 bg-white mb-4">
+              <h5 class="fw-bold mb-3"><i class="bi bi-journal-bookmark-fill me-2 text-primary"></i>Knowledge Base Topics</h5>
+              
+              <div class="d-flex flex-column gap-2">
+                <a href="#" class="p-2 border rounded-3 text-dark text-decoration-none d-flex justify-content-between align-items-center hover-bg-light" onclick="sendPrompt('What is CareNests cancellation policy?')">
+                  <span class="small fw-semibold">Cancellation & Refund Policy</span>
+                  <i class="bi bi-chevron-right text-muted small"></i>
+                </a>
+                <a href="#" class="p-2 border rounded-3 text-dark text-decoration-none d-flex justify-content-between align-items-center" onclick="sendPrompt('How does CareNest detect fake reviews?')">
+                  <span class="small fw-semibold">NLP Fake Review Detection</span>
+                  <i class="bi bi-chevron-right text-muted small"></i>
+                </a>
+                <a href="#" class="p-2 border rounded-3 text-dark text-decoration-none d-flex justify-content-between align-items-center" onclick="sendPrompt('How do I update special needs for my child?')">
+                  <span class="small fw-semibold">Managing Child Health Profiles</span>
+                  <i class="bi bi-chevron-right text-muted small"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Emergency Safety Contacts -->
+            <div class="carenest-card p-4 bg-white">
+              <h5 class="fw-bold mb-2 text-danger"><i class="bi bi-telephone-outbound-fill me-2"></i>Emergency Hotlines</h5>
+              <p class="text-muted small mb-3">For real-time critical emergencies during active care sessions:</p>
+              
+              <div class="p-3 bg-danger-light rounded-3 text-danger fw-bold small mb-2 d-flex align-items-center gap-2">
+                <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                <span>Emergency Services: 911</span>
+              </div>
+              <div class="p-3 bg-light rounded-3 text-dark fw-semibold small d-flex align-items-center gap-2">
+                <i class="bi bi-headset text-primary fs-5"></i>
+                <span>CareNest Urgent Line: +1 (800) 555-6378</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+
+  <script>
+    function sendPrompt(text) {
+      document.getElementById('chatInput').value = text;
+      handleSendMessage(new Event('submit'));
+    }
+
+    function handleSendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatFeed = document.getElementById('chatFeed');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      // Append User message
+      const userBubble = document.createElement('div');
+      userBubble.className = 'chat-bubble chat-bubble-user';
+      userBubble.textContent = text;
+      chatFeed.insertBefore(userBubble, typingIndicator);
+
+      input.value = '';
+      chatFeed.scrollTop = chatFeed.scrollHeight;
+
+      // Show typing indicator
+      typingIndicator.style.display = 'block';
+      chatFeed.scrollTop = chatFeed.scrollHeight;
+
+      // Simulate AI response
+      setTimeout(() => {
+        typingIndicator.style.display = 'none';
+        
+        let reply = "CareNest AI is trained on verified childcare safety protocols. Your request has been noted! You can also check our FAQ guides or consult an administrator.";
+        const lower = text.toLowerCase();
+
+        if (lower.includes('cancellation') || lower.includes('refund')) {
+          reply = "You can cancel any booking free of charge up to 12 hours prior to the session start time directly from your 'My Bookings' tab.";
+        } else if (lower.includes('verify') || lower.includes('background') || lower.includes('criminal')) {
+          reply = "All CareNest caregivers undergo mandatory government-issued photo ID checks, nationwide criminal database screening, and professional CPR/medical credential verification prior to approval.";
+        } else if (lower.includes('match') || lower.includes('recommend') || lower.includes('ai')) {
+          reply = "Our Hybrid AI recommendation model computes compatibility by evaluating child age, allergies, required caregiver certifications, location proximity (Content-Based), and satisfaction scores from parents with similar child needs (Collaborative Filtering).";
+        } else if (lower.includes('checklist') || lower.includes('first-time') || lower.includes('prepare')) {
+          reply = "Key preparation tips: 1) Leave emergency contacts visible on the fridge. 2) Review allergies/EpiPen locations. 3) Show the first-aid kit. 4) Clarify bedtime and snack routines.";
+        }
+
+        const botBubble = document.createElement('div');
+        botBubble.className = 'chat-bubble chat-bubble-bot';
+        botBubble.innerHTML = `<p class="mb-1 fw-semibold text-primary"><i class="bi bi-robot me-1"></i>CareNest AI</p><p class="mb-0">${reply}</p>`;
+        chatFeed.insertBefore(botBubble, typingIndicator);
+        chatFeed.scrollTop = chatFeed.scrollHeight;
+      }, 900);
+    }
+
+    function clearChat() {
+      const chatFeed = document.getElementById('chatFeed');
+      chatFeed.innerHTML = `
+        <div class="chat-bubble chat-bubble-bot">
+          <p class="mb-1 fw-semibold text-primary"><i class="bi bi-robot me-1"></i>CareNest AI</p>
+          <p class="mb-0">Conversation reset. How can I assist your family today?</p>
+        </div>
+        <div class="typing-indicator" id="typingIndicator"><i class="bi bi-three-dots"></i> CareNest AI is thinking...</div>
+      `;
+      showToast('Chat Cleared', 'Conversation history cleared.', 'info');
+    }
+  </script>
+</body>
+</html>
