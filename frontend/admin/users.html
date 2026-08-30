@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management - CareNest Admin</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-shield-lock-fill text-danger"></i>
+        <span>Care<span class="text-secondary">Nest</span> <small class="badge bg-danger text-white fs-7 px-2">ADMIN</small></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" alt="Admin" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Alex Vance (Super Admin)</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="monitoring.html"><i class="bi bi-activity me-2"></i>System Health</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Overview</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Admin Dashboard</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Management</div>
+      <a href="users.html" class="nav-item active"><i class="bi bi-people"></i> User Management</a>
+      <a href="caregivers.html" class="nav-item"><i class="bi bi-person-badge"></i> Caregiver Directory</a>
+      <a href="verifications.html" class="nav-item"><i class="bi bi-patch-check"></i> Verification Queue <span class="badge bg-warning text-dark ms-auto">4</span></a>
+      <a href="bookings.html" class="nav-item"><i class="bi bi-calendar2-range"></i> Bookings & Escrow</a>
+
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">AI Trust & Content</div>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Review Moderation</a>
+      <a href="suspicious_reviews.html" class="nav-item"><i class="bi bi-shield-exclamation text-danger"></i> AI Flagged Reviews <span class="badge bg-danger ms-auto">2</span></a>
+      <a href="chatbot_kb.html" class="nav-item"><i class="bi bi-robot text-primary"></i> Chatbot Knowledge Base</a>
+
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Analytics & Infra</div>
+      <a href="reports.html" class="nav-item"><i class="bi bi-graph-up-arrow"></i> Reports & Insights</a>
+      <a href="monitoring.html" class="nav-item"><i class="bi bi-cpu"></i> System Monitoring</a>
+
+      <div class="mt-auto pt-3 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0">
+        
+        <!-- Header Card -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+              <h3 class="fw-bold mb-1">User Management</h3>
+              <p class="text-muted small mb-0">Manage 1,420 registered parents, caregivers, and platform administrators.</p>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="showToast('Export', 'Exporting user dataset to CSV...', 'info')">
+              <i class="bi bi-download me-1"></i>Export User List (CSV)
+            </button>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="row g-2 mt-3 pt-3 border-top">
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Search by name, email, or user ID...">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>All Roles</option>
+                <option>Parents</option>
+                <option>Caregivers</option>
+                <option>Administrators</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>All Account Statuses</option>
+                <option>Active Only</option>
+                <option>Suspended</option>
+                <option>Pending Verification</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="carenest-card p-4 bg-white shadow-sm mb-4">
+          <div class="table-responsive">
+            <table class="table align-middle table-hover mb-0">
+              <thead class="table-light small text-uppercase">
+                <tr>
+                  <th>User Profile</th>
+                  <th>Role</th>
+                  <th>Verification</th>
+                  <th>Joined Date</th>
+                  <th>Status</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="small">
+                
+                <!-- Row 1 (Parent) -->
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jessica" class="rounded-circle border" width="40" height="40">
+                      <div>
+                        <div class="fw-bold text-dark">Jessica Miller</div>
+                        <span class="text-muted">jessica.miller@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-primary-light text-primary fw-bold">Parent</span></td>
+                  <td><span class="badge-verified"><i class="bi bi-check-circle-fill"></i> ID Verified</span></td>
+                  <td class="text-muted">Aug 10, 2025</td>
+                  <td><span class="badge bg-success-light text-success fw-bold">Active</span></td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#userInspectModal">Inspect</button>
+                    <button class="btn btn-sm btn-outline-warning" onclick="showToast('Status Changed', 'User account status toggled.', 'warning')">Suspend</button>
+                  </td>
+                </tr>
+
+                <!-- Row 2 (Caregiver) -->
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="rounded-circle border" width="40" height="40">
+                      <div>
+                        <div class="fw-bold text-dark">Sarah Jenkins</div>
+                        <span class="text-muted">sarah.jenkins@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-success-light text-success fw-bold">Caregiver</span></td>
+                  <td><span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Tier 3 Gold</span></td>
+                  <td class="text-muted">July 02, 2025</td>
+                  <td><span class="badge bg-success-light text-success fw-bold">Active</span></td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#userInspectModal">Inspect</button>
+                    <button class="btn btn-sm btn-outline-warning" onclick="showToast('Status Changed', 'User account status toggled.', 'warning')">Suspend</button>
+                  </td>
+                </tr>
+
+                <!-- Row 3 (Caregiver Pending) -->
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80" alt="Chloe" class="rounded-circle border" width="40" height="40">
+                      <div>
+                        <div class="fw-bold text-dark">Chloe Davis</div>
+                        <span class="text-muted">chloe.d@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-success-light text-success fw-bold">Caregiver</span></td>
+                  <td><span class="badge bg-warning-light text-dark fw-bold"><i class="bi bi-clock-history"></i> In Review</span></td>
+                  <td class="text-muted">Aug 28, 2026</td>
+                  <td><span class="badge bg-warning-light text-dark fw-bold">Pending</span></td>
+                  <td class="text-end">
+                    <a href="verifications.html" class="btn btn-sm btn-primary">Audit ID</a>
+                  </td>
+                </tr>
+
+                <!-- Row 4 (Admin) -->
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" alt="Alex" class="rounded-circle border" width="40" height="40">
+                      <div>
+                        <div class="fw-bold text-dark">Alex Vance</div>
+                        <span class="text-muted">admin@carenest.org</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-danger text-white fw-bold">Super Admin</span></td>
+                  <td><span class="badge bg-light text-muted border">System Staff</span></td>
+                  <td class="text-muted">Jan 01, 2025</td>
+                  <td><span class="badge bg-success-light text-success fw-bold">Active</span></td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-light border" disabled>Protected</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="mt-4">
+            <ul class="pagination justify-content-center mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- User Inspect Modal -->
+  <div class="modal fade" id="userInspectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">User Account Dossier</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body py-3 small">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" class="rounded-circle" width="56" height="56">
+            <div>
+              <h6 class="fw-bold mb-0">Jessica Miller (Parent)</h6>
+              <span class="text-muted">User ID: #USR-1049 • Joined Aug 2025</span>
+            </div>
+          </div>
+          <div class="p-3 bg-light rounded-3 mb-3 border">
+            <div><strong>Location:</strong> 742 Evergreen Terrace, San Francisco, CA</div>
+            <div><strong>Child:</strong> Liam (Toddler, 2 yrs old)</div>
+            <div><strong>Completed Bookings:</strong> 12 Sessions</div>
+            <div><strong>Escrow Spend:</strong> $1,240.00 Total</div>
+          </div>
+          <button class="btn btn-outline-danger btn-sm w-100" onclick="showToast('Admin Action', 'Account suspension toggle issued.', 'warning')">
+            Suspend Account Access
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
