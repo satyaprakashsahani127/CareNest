@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah Jenkins - Caregiver Profile - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <span class="badge bg-primary-light text-primary d-none d-sm-inline-flex align-items-center gap-1 px-3 py-2 rounded-pill">
+          <i class="bi bi-person-heart"></i> Parent Portal
+        </span>
+
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jessica Miller" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Jessica Miller</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="child_requirements.html"><i class="bi bi-card-checklist me-2"></i>Child Preferences</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Main Menu</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="profile.html" class="nav-item"><i class="bi bi-person-lines-fill"></i> Parent Profile</a>
+      <a href="child_requirements.html" class="nav-item"><i class="bi bi-clipboard-heart"></i> Child Requirements</a>
+      <a href="search.html" class="nav-item active"><i class="bi bi-search"></i> Caregiver Search</a>
+      <a href="recommendations.html" class="nav-item"><i class="bi bi-stars text-warning"></i> AI Recommendations</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-4 mb-2">Bookings & Care</div>
+      <a href="my_bookings.html" class="nav-item"><i class="bi bi-calendar2-check"></i> My Bookings</a>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Reviews & Ratings</a>
+      <a href="chatbot.html" class="nav-item"><i class="bi bi-robot text-primary"></i> 24/7 AI Chatbot</a>
+
+      <div class="mt-auto pt-4 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0">
+        
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb small">
+            <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="search.html">Caregivers</a></li>
+            <li class="breadcrumb-item active">Sarah Jenkins</li>
+          </ol>
+        </nav>
+
+        <!-- Profile Top Banner Card -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <div class="row align-items-center g-4">
+            <div class="col-md-auto text-center">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="rounded-circle border" width="110" height="110" style="object-fit:cover;">
+            </div>
+            
+            <div class="col-md">
+              <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                <h3 class="fw-bold mb-0">Sarah Jenkins</h3>
+                <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified Caregiver</span>
+                <span class="badge bg-success-light text-success"><i class="bi bi-lightning-fill"></i> Responds in &lt; 15 mins</span>
+              </div>
+              
+              <p class="text-muted small mb-2">
+                <i class="bi bi-geo-alt me-1"></i>Downtown, San Francisco, CA (1.2 miles from your home) • 6 Years Childcare Experience
+              </p>
+
+              <div class="d-flex flex-wrap align-items-center gap-3 small">
+                <div class="d-flex align-items-center gap-1">
+                  <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  <span class="fw-bold fs-6">4.9</span>
+                  <span class="text-muted">(48 verified parent reviews)</span>
+                </div>
+                <span class="text-muted">• 124 Completed Sessions</span>
+              </div>
+            </div>
+
+            <div class="col-md-auto text-md-end">
+              <span class="text-muted small d-block">Hourly Rate</span>
+              <h2 class="fw-bold text-primary mb-0">$25<small class="fs-6 text-muted">/hr</small></h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          
+          <!-- Left Column (Bio, Credentials, Schedule, Reviews) -->
+          <div class="col-lg-8">
+            
+            <!-- About Me -->
+            <div class="carenest-card p-4 mb-4 bg-white">
+              <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2 text-primary"></i>About Sarah</h5>
+              <p class="text-muted">
+                Hi families! I am a passionate, certified Early Childhood Educator with over 6 years of hands-on nanny and babysitting experience. I specialize in infant milestone tracking, toddler sensory games, and fostering healthy, creative environments.
+              </p>
+              <p class="text-muted mb-0">
+                Safety and structured nurturing are my top priorities. I hold valid Pediatric First Aid & CPR certifications, have passed all criminal background checks, and am trained in EpiPen administration for children with severe food allergies.
+              </p>
+            </div>
+
+            <!-- Verified Credentials -->
+            <div class="carenest-card p-4 mb-4 bg-white">
+              <h5 class="fw-bold mb-3"><i class="bi bi-shield-check me-2 text-success"></i>Verified Background & Credentials</h5>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="p-3 bg-light rounded-3 d-flex align-items-center gap-3">
+                    <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                    <div>
+                      <h6 class="fw-bold mb-0">Identity & Address Verified</h6>
+                      <small class="text-muted">Government ID Confirmed</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 bg-light rounded-3 d-flex align-items-center gap-3">
+                    <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                    <div>
+                      <h6 class="fw-bold mb-0">Criminal Background Cleared</h6>
+                      <small class="text-muted">National Registry Clearance</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 bg-light rounded-3 d-flex align-items-center gap-3">
+                    <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                    <div>
+                      <h6 class="fw-bold mb-0">Pediatric CPR & First Aid</h6>
+                      <small class="text-muted">Valid through Nov 2027</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 bg-light rounded-3 d-flex align-items-center gap-3">
+                    <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                    <div>
+                      <h6 class="fw-bold mb-0">Early Childhood Degree</h6>
+                      <small class="text-muted">B.A. Child Development</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weekly Availability Schedule -->
+            <div class="carenest-card p-4 mb-4 bg-white">
+              <h5 class="fw-bold mb-3"><i class="bi bi-calendar-week me-2 text-primary"></i>Weekly Availability</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered text-center align-middle small mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Slot</th>
+                      <th>Mon</th>
+                      <th>Tue</th>
+                      <th>Wed</th>
+                      <th>Thu</th>
+                      <th>Fri</th>
+                      <th>Sat</th>
+                      <th>Sun</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-bold bg-light">Morning (8am - 12pm)</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="text-muted">Off</td>
+                      <td class="text-muted">Off</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold bg-light">Afternoon (12pm - 5pm)</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="text-muted">Off</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold bg-light">Evening (5pm - 9pm)</td>
+                      <td class="text-muted">Booked</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="text-muted">Booked</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="bg-success-light text-success fw-bold">Open</td>
+                      <td class="text-muted">Off</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Verified Parent Reviews with NLP Score -->
+            <div class="carenest-card p-4 bg-white">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0"><i class="bi bi-chat-heart-fill me-2 text-danger"></i>Parent Reviews & Ratings</h5>
+                <span class="badge bg-primary-light text-primary px-3 py-1 rounded-pill small"><i class="bi bi-shield-check me-1"></i>NLP Fake Review Filter Active</span>
+              </div>
+
+              <!-- Review 1 -->
+              <div class="p-3 border rounded-3 mb-3 bg-light">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Amanda H." class="rounded-circle" width="36" height="36">
+                    <div>
+                      <h6 class="fw-bold mb-0">Amanda Henderson</h6>
+                      <small class="text-muted">Parent of 2 yr old • Verified Booking</small>
+                    </div>
+                  </div>
+                  <span class="badge-verified"><i class="bi bi-check2-circle"></i> Genuine (99.4% NLP Score)</span>
+                </div>
+                <div class="star-rating mb-2">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p class="small text-muted mb-0">"Sarah was punctual, extremely warm with our toddler, and took meticulous notes about his peanut allergy precautions. We felt 100% comfortable leaving Liam in her care!"</p>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="p-3 border rounded-3 bg-light">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Robert T." class="rounded-circle" width="36" height="36">
+                    <div>
+                      <h6 class="fw-bold mb-0">Robert Taylor</h6>
+                      <small class="text-muted">Parent of 1 yr old • Verified Booking</small>
+                    </div>
+                  </div>
+                  <span class="badge-verified"><i class="bi bi-check2-circle"></i> Genuine (98.7% NLP Score)</span>
+                </div>
+                <div class="star-rating mb-2">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p class="small text-muted mb-0">"Exceptional caregiver. She engaged our baby with soothing sensory play and left detailed logs of feedings and diaper changes. Highly recommended!"</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column (Sticky Booking Widget) -->
+          <div class="col-lg-4">
+            <div class="carenest-card p-4 bg-white sticky-top shadow-sm" style="top: 80px; z-index: 10;">
+              <h5 class="fw-bold mb-3"><i class="bi bi-calendar-check-fill me-2 text-primary"></i>Book Sarah Jenkins</h5>
+              
+              <form action="booking.html" method="GET">
+                <input type="hidden" name="caregiver" value="Sarah Jenkins">
+                <input type="hidden" name="rate" value="25">
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Select Child</label>
+                  <select class="form-select form-select-sm" name="child">
+                    <option selected>Liam (Toddler, 2 yrs)</option>
+                    <option>+ Add / Select Other Child</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Booking Date</label>
+                  <input type="date" class="form-control form-control-sm" value="2026-09-01" required>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-6">
+                    <label class="form-label small fw-bold">Start Time</label>
+                    <select class="form-select form-select-sm">
+                      <option selected>9:00 AM</option>
+                      <option>10:00 AM</option>
+                      <option>1:00 PM</option>
+                      <option>2:00 PM</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label small fw-bold">Duration</label>
+                    <select class="form-select form-select-sm" id="durationSelect" onchange="updatePrice(this.value)">
+                      <option value="2">2 Hours</option>
+                      <option value="3">3 Hours</option>
+                      <option value="4" selected>4 Hours</option>
+                      <option value="6">6 Hours</option>
+                      <option value="8">8 Hours</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 mb-4 border">
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span>Hourly Rate:</span>
+                    <span class="fw-semibold">$25 / hr</span>
+                  </div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span>Duration:</span>
+                    <span class="fw-semibold" id="durationText">4 Hours</span>
+                  </div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span>Platform Fee (0%):</span>
+                    <span class="text-success fw-semibold">Free</span>
+                  </div>
+                  <hr class="my-2">
+                  <div class="d-flex justify-content-between fw-bold">
+                    <span>Total Estimated:</span>
+                    <span class="text-primary fs-5" id="totalEstimate">$100.00</span>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                  <i class="bi bi-check2-circle me-1"></i>Request Booking
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Chatbot Launcher -->
+  <a href="chatbot.html" class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; z-index: 1050;" title="Ask CareNest AI Assistant">
+    <i class="bi bi-chat-dots-fill fs-4"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+
+  <script>
+    function updatePrice(hours) {
+      const rate = 25;
+      const total = hours * rate;
+      document.getElementById('durationText').textContent = `${hours} Hours`;
+      document.getElementById('totalEstimate').textContent = `$${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
