@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Monitoring & AI Health - CareNest Admin</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-shield-lock-fill text-danger"></i>
+        <span>Care<span class="text-secondary">Nest</span> <small class="badge bg-danger text-white fs-7 px-2">ADMIN</small></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" alt="Admin" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Alex Vance (Super Admin)</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="monitoring.html"><i class="bi bi-activity me-2"></i>System Health</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Overview</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Admin Dashboard</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Management</div>
+      <a href="users.html" class="nav-item"><i class="bi bi-people"></i> User Management</a>
+      <a href="caregivers.html" class="nav-item"><i class="bi bi-person-badge"></i> Caregiver Directory</a>
+      <a href="verifications.html" class="nav-item"><i class="bi bi-patch-check"></i> Verification Queue <span class="badge bg-warning text-dark ms-auto">4</span></a>
+      <a href="bookings.html" class="nav-item"><i class="bi bi-calendar2-range"></i> Bookings & Escrow</a>
+
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">AI Trust & Content</div>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Review Moderation</a>
+      <a href="suspicious_reviews.html" class="nav-item"><i class="bi bi-shield-exclamation text-danger"></i> AI Flagged Reviews <span class="badge bg-danger ms-auto">2</span></a>
+      <a href="chatbot_kb.html" class="nav-item"><i class="bi bi-robot text-primary"></i> Chatbot Knowledge Base</a>
+
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Analytics & Infra</div>
+      <a href="reports.html" class="nav-item"><i class="bi bi-graph-up-arrow"></i> Reports & Insights</a>
+      <a href="monitoring.html" class="nav-item active"><i class="bi bi-cpu"></i> System Monitoring</a>
+
+      <div class="mt-auto pt-3 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0">
+        
+        <!-- Header Card -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <h3 class="fw-bold mb-0">System Health & AI Infrastructure</h3>
+                <span class="badge bg-success-light text-success fw-bold px-3 py-1 rounded-pill small">99.98% Uptime</span>
+              </div>
+              <p class="text-muted small mb-0">Real-time health telemetry across Django APIs, Scikit-learn AI models, and database connections.</p>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="showToast('Purge Cache', 'In-memory AI and HTTP cache cleared.', 'info')">
+              <i class="bi bi-arrow-repeat me-1"></i>Purge Cache & Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Health Vitals -->
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small fw-semibold">REST API Latency</span>
+                <h3 class="fw-bold my-1 text-success">24 ms</h3>
+                <span class="badge bg-success-light text-success small">Optimal Speed</span>
+              </div>
+              <div class="stat-icon bg-success-light text-success">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small fw-semibold">AI Recommendation Engine</span>
+                <h3 class="fw-bold my-1 text-primary">48 ms</h3>
+                <span class="badge bg-primary-light text-primary small">Hybrid Vector Scan</span>
+              </div>
+              <div class="stat-icon bg-primary-light text-primary">
+                <i class="bi bi-cpu-fill"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small fw-semibold">Database Query Latency</span>
+                <h3 class="fw-bold my-1 text-dark">4 ms</h3>
+                <span class="badge bg-light text-dark border small">SQLite Engine</span>
+              </div>
+              <div class="stat-icon bg-light text-dark">
+                <i class="bi bi-database-fill-check"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="stat-card">
+              <div>
+                <span class="text-muted small fw-semibold">Server Compute Load</span>
+                <h3 class="fw-bold my-1 text-info">22% CPU</h3>
+                <span class="badge bg-info-light text-info small">38% RAM Allocated</span>
+              </div>
+              <div class="stat-icon bg-info-light text-info">
+                <i class="bi bi-speedometer"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Microservices Status Table -->
+        <div class="carenest-card p-4 bg-white shadow-sm mb-4">
+          <h5 class="fw-bold mb-3"><i class="bi bi-hdd-network-fill me-2 text-primary"></i>Service & AI Model Telemetry</h5>
+          
+          <div class="table-responsive">
+            <table class="table align-middle mb-0 small">
+              <thead class="table-light text-uppercase">
+                <tr>
+                  <th>Component Service</th>
+                  <th>Type</th>
+                  <th>Engine / Framework</th>
+                  <th>Uptime</th>
+                  <th class="text-end">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core REST Backend API</strong></td>
+                  <td>Web Service</td>
+                  <td>Django 5.x / Django REST Framework</td>
+                  <td>99.99%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Operational</span></td>
+                </tr>
+                <tr>
+                  <td><strong>AI Content-Based Engine (Phase 5.1)</strong></td>
+                  <td>Machine Learning</td>
+                  <td>TF-IDF & Cosine Similarity (Scikit-Learn)</td>
+                  <td>99.98%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Model Ready</span></td>
+                </tr>
+                <tr>
+                  <td><strong>AI Collaborative Filtering (Phase 5.2)</strong></td>
+                  <td>Machine Learning</td>
+                  <td>Matrix Factorization & Ratings Cosine</td>
+                  <td>99.98%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Model Ready</span></td>
+                </tr>
+                <tr>
+                  <td><strong>AI Fake Review Classifier (Phase 5.4)</strong></td>
+                  <td>NLP Anomaly Filter</td>
+                  <td>NLTK & Scikit-Learn Pipeline</td>
+                  <td>99.95%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Model Ready</span></td>
+                </tr>
+                <tr>
+                  <td><strong>24/7 NLP Chatbot Assistant (Phase 5.5)</strong></td>
+                  <td>NLP Intent Parser</td>
+                  <td>42 Intent Vectors in Memory</td>
+                  <td>100.0%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Relational Database Engine</strong></td>
+                  <td>Data Storage</td>
+                  <td>SQLite / Django ORM Pool</td>
+                  <td>100.0%</td>
+                  <td class="text-end"><span class="badge bg-success-light text-success fw-bold">Healthy</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Live Server Log Console -->
+        <div class="carenest-card p-4 bg-dark text-light shadow-sm">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-white font-monospace"><i class="bi bi-terminal-fill me-2 text-success"></i>Live Server & AI Inference Stream</h6>
+            <span class="badge bg-success text-dark font-monospace small">STREAMING LIVE</span>
+          </div>
+
+          <div class="p-3 bg-black rounded-3 font-monospace small" style="max-height: 200px; overflow-y: auto; line-height: 1.6;">
+            <div class="text-muted">[2026-08-31 01:30:12] [INFO] [HTTP] GET /api/caregivers/search?radius=8&rating=4.5 -> 200 OK (22ms)</div>
+            <div class="text-info">[2026-08-31 01:30:14] [AI-RECOM] Hybrid match computation executed for Parent #USR-1049 -> 3 candidates ranked (46ms)</div>
+            <div class="text-muted">[2026-08-31 01:30:20] [INFO] [HTTP] POST /api/bookings/create -> 201 Created (Ref: #CN-9042, 31ms)</div>
+            <div class="text-success">[2026-08-31 01:30:25] [NLP-SAFETY] Review submission scanned -> Genuine Authenticity Score: 99.4% (12ms)</div>
+            <div class="text-muted">[2026-08-31 01:30:30] [INFO] [CHATBOT] Intent matched: verification_rules (Confidence: 0.994, 8ms)</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
