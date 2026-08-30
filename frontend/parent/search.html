@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caregiver Search - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <span class="badge bg-primary-light text-primary d-none d-sm-inline-flex align-items-center gap-1 px-3 py-2 rounded-pill">
+          <i class="bi bi-person-heart"></i> Parent Portal
+        </span>
+
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jessica Miller" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Jessica Miller</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="child_requirements.html"><i class="bi bi-card-checklist me-2"></i>Child Preferences</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Main Menu</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="profile.html" class="nav-item"><i class="bi bi-person-lines-fill"></i> Parent Profile</a>
+      <a href="child_requirements.html" class="nav-item"><i class="bi bi-clipboard-heart"></i> Child Requirements</a>
+      <a href="search.html" class="nav-item active"><i class="bi bi-search"></i> Caregiver Search</a>
+      <a href="recommendations.html" class="nav-item"><i class="bi bi-stars text-warning"></i> AI Recommendations</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-4 mb-2">Bookings & Care</div>
+      <a href="my_bookings.html" class="nav-item"><i class="bi bi-calendar2-check"></i> My Bookings</a>
+      <a href="reviews.html" class="nav-item"><i class="bi bi-star"></i> Reviews & Ratings</a>
+      <a href="chatbot.html" class="nav-item"><i class="bi bi-robot text-primary"></i> 24/7 AI Chatbot</a>
+
+      <div class="mt-auto pt-4 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0">
+        
+        <!-- Search Bar Header -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <form onsubmit="event.preventDefault(); showToast('Searching', 'Filtering verified caregivers...', 'info');">
+            <div class="row g-2">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                  <input type="text" class="form-control border-start-0" placeholder="Search by skill, name, or specialty..." value="Toddler CPR">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <span class="input-group-text bg-light border-end-0"><i class="bi bi-geo-alt text-muted"></i></span>
+                  <input type="text" class="form-control border-start-0" placeholder="City or Postal Code" value="San Francisco, CA">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100 fw-bold">
+                  <i class="bi bi-funnel-fill me-1"></i>Search Caregivers
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row g-4">
+          
+          <!-- Filters Sidebar (Left Column) -->
+          <div class="col-lg-4 col-xl-3">
+            <div class="carenest-card p-4 bg-white sticky-top" style="top: 80px; z-index: 10;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0"><i class="bi bi-sliders me-2 text-primary"></i>Filters</h5>
+                <a href="search.html" class="small text-muted text-decoration-none">Reset</a>
+              </div>
+
+              <!-- Distance Radius Slider -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between small fw-semibold mb-1">
+                  <span>Distance Radius</span>
+                  <span class="text-primary fw-bold" id="distanceVal">Within 5 miles</span>
+                </div>
+                <input type="range" class="form-range" min="1" max="25" value="5" oninput="document.getElementById('distanceVal').textContent = `Within ${this.value} miles`">
+              </div>
+
+              <!-- Hourly Rate Slider -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between small fw-semibold mb-1">
+                  <span>Max Hourly Rate</span>
+                  <span class="text-primary fw-bold" id="rateVal">$35/hr</span>
+                </div>
+                <input type="range" class="form-range" min="15" max="80" value="35" oninput="document.getElementById('rateVal').textContent = `$${this.value}/hr`">
+              </div>
+
+              <!-- Star Rating Filter -->
+              <div class="mb-4">
+                <label class="form-label small fw-bold">Minimum Rating</label>
+                <div class="d-flex flex-column gap-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ratingFilter" id="r45" checked>
+                    <label class="form-check-label small" for="r45">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span> 4.5 & Above
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ratingFilter" id="r40">
+                    <label class="form-check-label small" for="r40">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span> 4.0 & Above
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Certified Skills -->
+              <div class="mb-4">
+                <label class="form-label small fw-bold">Required Skills</label>
+                <div class="d-flex flex-column gap-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fCpr" checked>
+                    <label class="form-check-label small" for="fCpr">Pediatric CPR Certified</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fInfant" checked>
+                    <label class="form-check-label small" for="fInfant">Infant Care Experience</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fSpecial">
+                    <label class="form-check-label small" for="fSpecial">Special Needs Support</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fBilingual">
+                    <label class="form-check-label small" for="fBilingual">Bilingual / Multilingual</label>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-sm w-100" onclick="showToast('Filter Applied', 'Updated search results matching your filter criteria.', 'success')">Apply Filter</button>
+            </div>
+          </div>
+
+          <!-- Results Grid (Right Column) -->
+          <div class="col-lg-8 col-xl-9">
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Showing <strong class="text-dark">6</strong> Verified Caregivers in San Francisco</span>
+              <div class="d-flex align-items-center gap-2">
+                <span class="small text-muted d-none d-sm-inline">Sort by:</span>
+                <select class="form-select form-select-sm" style="width: 170px;">
+                  <option selected>AI Best Match</option>
+                  <option>Rating: High to Low</option>
+                  <option>Price: Low to High</option>
+                  <option>Experience: Highest</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Grid of Caregiver Cards -->
+            <div class="row g-3">
+              
+              <!-- Result 1 -->
+              <div class="col-md-6">
+                <div class="carenest-card p-4 h-100 bg-white d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div class="d-flex gap-3 align-items-center">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="rounded-circle border" width="60" height="60" style="object-fit:cover;">
+                        <div>
+                          <h6 class="fw-bold mb-0">Sarah Jenkins</h6>
+                          <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                        </div>
+                      </div>
+                      <span class="fw-bold text-primary fs-5">$25<small class="fs-7 text-muted">/hr</small></span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2 small mb-2">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                      <span class="fw-bold">4.9</span>
+                      <span class="text-muted">(48 reviews)</span>
+                      <span class="badge bg-light text-muted ms-auto"><i class="bi bi-geo-alt me-1"></i>1.2 miles</span>
+                    </div>
+
+                    <p class="text-muted small mb-3">Certified Early Childhood Educator with 6 years experience caring for infants and toddlers. Pediatric First Aid certified.</p>
+
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                      <span class="badge-skill">Infant Care</span>
+                      <span class="badge-skill">CPR Certified</span>
+                      <span class="badge-skill">Montessori</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 pt-2 border-top">
+                    <a href="caregiver_profile.html" class="btn btn-outline-primary btn-sm flex-fill">View Profile</a>
+                    <a href="booking.html" class="btn btn-primary btn-sm flex-fill">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result 2 -->
+              <div class="col-md-6">
+                <div class="carenest-card p-4 h-100 bg-white d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div class="d-flex gap-3 align-items-center">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80" alt="Elena Rodriguez" class="rounded-circle border" width="60" height="60" style="object-fit:cover;">
+                        <div>
+                          <h6 class="fw-bold mb-0">Elena Rodriguez</h6>
+                          <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                        </div>
+                      </div>
+                      <span class="fw-bold text-primary fs-5">$30<small class="fs-7 text-muted">/hr</small></span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2 small mb-2">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                      <span class="fw-bold">4.8</span>
+                      <span class="text-muted">(32 reviews)</span>
+                      <span class="badge bg-light text-muted ms-auto"><i class="bi bi-geo-alt me-1"></i>2.4 miles</span>
+                    </div>
+
+                    <p class="text-muted small mb-3">Specialized in Special Needs and Autism spectrum support. Fluent in English and Spanish. 8+ years of dedicated experience.</p>
+
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                      <span class="badge-skill">Special Needs</span>
+                      <span class="badge-skill">Bilingual</span>
+                      <span class="badge-skill">Speech Dev</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 pt-2 border-top">
+                    <a href="caregiver_profile.html" class="btn btn-outline-primary btn-sm flex-fill">View Profile</a>
+                    <a href="booking.html" class="btn btn-primary btn-sm flex-fill">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result 3 -->
+              <div class="col-md-6">
+                <div class="carenest-card p-4 h-100 bg-white d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div class="d-flex gap-3 align-items-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Marcus Chen" class="rounded-circle border" width="60" height="60" style="object-fit:cover;">
+                        <div>
+                          <h6 class="fw-bold mb-0">Marcus Chen</h6>
+                          <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                        </div>
+                      </div>
+                      <span class="fw-bold text-primary fs-5">$28<small class="fs-7 text-muted">/hr</small></span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2 small mb-2">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                      <span class="fw-bold">5.0</span>
+                      <span class="text-muted">(61 reviews)</span>
+                      <span class="badge bg-light text-muted ms-auto"><i class="bi bi-geo-alt me-1"></i>3.1 miles</span>
+                    </div>
+
+                    <p class="text-muted small mb-3">Former pediatric assistant. Passionate about creative arts, homework mentoring, and active outdoor safety for children.</p>
+
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                      <span class="badge-skill">Pediatric Exp</span>
+                      <span class="badge-skill">Homework Help</span>
+                      <span class="badge-skill">Nutrition</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 pt-2 border-top">
+                    <a href="caregiver_profile.html" class="btn btn-outline-primary btn-sm flex-fill">View Profile</a>
+                    <a href="booking.html" class="btn btn-primary btn-sm flex-fill">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result 4 -->
+              <div class="col-md-6">
+                <div class="carenest-card p-4 h-100 bg-white d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div class="d-flex gap-3 align-items-center">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&auto=format&fit=crop&q=80" alt="Chloe Davis" class="rounded-circle border" width="60" height="60" style="object-fit:cover;">
+                        <div>
+                          <h6 class="fw-bold mb-0">Chloe Davis</h6>
+                          <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                        </div>
+                      </div>
+                      <span class="fw-bold text-primary fs-5">$22<small class="fs-7 text-muted">/hr</small></span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2 small mb-2">
+                      <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span>
+                      <span class="fw-bold">4.7</span>
+                      <span class="text-muted">(29 reviews)</span>
+                      <span class="badge bg-light text-muted ms-auto"><i class="bi bi-geo-alt me-1"></i>4.0 miles</span>
+                    </div>
+
+                    <p class="text-muted small mb-3">Certified Newborn Care Specialist with gentle sleep training background. Warm, attentive, and highly dependable.</p>
+
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                      <span class="badge-skill">Newborn Care</span>
+                      <span class="badge-skill">Sleep Training</span>
+                      <span class="badge-skill">CPR Certified</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 pt-2 border-top">
+                    <a href="caregiver_profile.html" class="btn btn-outline-primary btn-sm flex-fill">View Profile</a>
+                    <a href="booking.html" class="btn btn-primary btn-sm flex-fill">Book Now</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-4">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Chatbot Launcher -->
+  <a href="chatbot.html" class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; z-index: 1050;" title="Ask CareNest AI Assistant">
+    <i class="bi bi-chat-dots-fill fs-4"></i>
+  </a>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
