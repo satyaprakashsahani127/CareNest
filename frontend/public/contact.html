@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Support - CareNest Childcare Platform</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg carenest-navbar py-3">
+    <div class="container">
+      <a class="navbar-brand carenest-brand" href="index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+      
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#careNestNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="careNestNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="how_it_works.html">How It Works</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Portals</a>
+            <ul class="dropdown-menu shadow-sm border-0 rounded-3">
+              <li><a class="dropdown-item py-2" href="../parent/dashboard.html"><i class="bi bi-person-heart text-primary me-2"></i>Parent Portal</a></li>
+              <li><a class="dropdown-item py-2" href="../caregiver/dashboard.html"><i class="bi bi-shield-check text-success me-2"></i>Caregiver Portal</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item py-2" href="../admin/dashboard.html"><i class="bi bi-speedometer2 text-danger me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3">Sign In</a>
+          <a href="register.html" class="btn btn-primary btn-sm px-3">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero-section text-center py-5">
+      <div class="container py-3">
+        <span class="badge bg-white text-primary border shadow-sm px-3 py-2 rounded-pill fw-semibold mb-3">Support & Safety</span>
+        <h1 class="hero-title">Get in Touch with CareNest</h1>
+        <p class="hero-subtitle mx-auto">
+          Have a question about AI recommendations, caregiver background checks, or booking support? Our dedicated family care team is ready to assist you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Details & Form Grid -->
+    <section class="py-5 bg-white">
+      <div class="container py-4">
+        <div class="row g-5">
+          <!-- Left Column: Support Channels -->
+          <div class="col-lg-5">
+            <h4 class="fw-bold mb-4">Direct Contact Channels</h4>
+            
+            <div class="d-flex flex-column gap-4">
+              <div class="carenest-card p-4 d-flex align-items-center gap-3">
+                <div class="stat-icon bg-primary-light text-primary">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Family Support Line</h6>
+                  <p class="text-muted small mb-0">+1 (800) 555-NEST (6378)</p>
+                  <span class="text-success small fw-semibold">Available Mon-Sat (8am - 8pm)</span>
+                </div>
+              </div>
+
+              <div class="carenest-card p-4 d-flex align-items-center gap-3">
+                <div class="stat-icon bg-success-light text-success">
+                  <i class="bi bi-shield-fill-exclamation"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Trust & Safety Escalation</h6>
+                  <p class="text-muted small mb-0">safety@carenest.org</p>
+                  <span class="text-primary small fw-semibold">Priority 24/7 Response</span>
+                </div>
+              </div>
+
+              <div class="carenest-card p-4 d-flex align-items-center gap-3">
+                <div class="stat-icon bg-secondary-light text-secondary">
+                  <i class="bi bi-robot"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Instant AI Assistant</h6>
+                  <p class="text-muted small mb-0">Answers FAQs, guides, & policies.</p>
+                  <a href="../parent/chatbot.html" class="text-secondary small fw-bold text-decoration-none">Launch Chatbot <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operating Hours & Office Location -->
+            <div class="p-4 bg-light rounded-4 mt-4 border">
+              <h6 class="fw-bold mb-2"><i class="bi bi-geo-alt-fill text-danger me-2"></i>CareNest Headquarters</h6>
+              <p class="text-muted small mb-1">100 Innovation Plaza, Suite 400</p>
+              <p class="text-muted small mb-0">San Francisco, CA 94107, USA</p>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Form -->
+          <div class="col-lg-7">
+            <div class="carenest-card p-4 p-md-5 shadow-sm">
+              <h4 class="fw-bold mb-2">Send Us a Message</h4>
+              <p class="text-muted small mb-4">Fill out the form below and a family care specialist will get back to you promptly.</p>
+
+              <form onsubmit="event.preventDefault(); showToast('Message Sent', 'Thank you! Our support team will contact you within 2 hours.', 'success'); this.reset();">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="e.g. Jessica Miller" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" placeholder="jessica@example.com" required>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="(555) 000-0000">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Topic / Department</label>
+                    <select class="form-select" required>
+                      <option value="" selected disabled>Select an inquiry type</option>
+                      <option>General Platform Inquiries</option>
+                      <option>Parent Booking Assistance</option>
+                      <option>Caregiver Verification Status</option>
+                      <option>Safety / Review Dispute</option>
+                      <option>Billing & Payments</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Subject</label>
+                  <input type="text" class="form-control" placeholder="Brief summary of your question" required>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Message Details</label>
+                  <textarea class="form-control" rows="5" placeholder="Please describe how we can assist you..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">
+                  <i class="bi bi-send-fill me-2"></i>Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="carenest-footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        <div class="col-lg-4 col-md-6">
+          <a class="carenest-brand text-white d-inline-flex mb-3" href="index.html">
+            <i class="bi bi-heart-pulse-fill text-primary"></i>
+            <span>Care<span class="text-secondary">Nest</span></span>
+          </a>
+          <p class="text-muted small pe-lg-4 mb-4">
+            CareNest is an AI-powered smart childcare platform connecting trusted, background-verified caregivers with caring parents through intelligent recommendation and verified reviews.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Platform</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="about.html" class="text-decoration-none">About Us</a></li>
+            <li><a href="features.html" class="text-decoration-none">Features</a></li>
+            <li><a href="how_it_works.html" class="text-decoration-none">How It Works</a></li>
+            <li><a href="contact.html" class="text-decoration-none">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Portals</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="../parent/dashboard.html" class="text-decoration-none">Parent Dashboard</a></li>
+            <li><a href="../caregiver/dashboard.html" class="text-decoration-none">Caregiver Portal</a></li>
+            <li><a href="../admin/dashboard.html" class="text-decoration-none">Admin Panel</a></li>
+            <li><a href="register.html" class="text-decoration-none">Join as Caregiver</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Stay Updated</h5>
+          <p class="small text-muted mb-3">Subscribe to safety guides and childcare parenting tips.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed', 'Thank you for subscribing to CareNest updates!', 'success');" class="input-group mb-3">
+            <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+            <button class="btn btn-primary btn-sm" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-muted">
+        <div>&copy; 2026 CareNest Platform. All rights reserved.</div>
+        <div class="d-flex gap-3 small">
+          <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
