@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an Account - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg carenest-navbar py-3">
+    <div class="container">
+      <a class="navbar-brand carenest-brand" href="index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+      
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#careNestNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="careNestNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="how_it_works.html">How It Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <span class="text-muted small">Already registered?</span>
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5 bg-light">
+    <div class="container py-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="carenest-card p-4 p-md-5 shadow-sm bg-white">
+            
+            <div class="text-center mb-4">
+              <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill fw-bold mb-2">Join CareNest</span>
+              <h2 class="fw-bold mb-1">Create Your Account</h2>
+              <p class="text-muted small">Choose your role to get started with verified childcare</p>
+            </div>
+
+            <!-- Role Selection Cards -->
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 text-center cursor-pointer role-card border-primary bg-light" id="roleCardParent" onclick="selectRole('parent')" style="cursor: pointer;">
+                  <div class="stat-icon bg-primary-light text-primary mx-auto mb-2" style="width: 44px; height: 44px;">
+                    <i class="bi bi-person-heart fs-4"></i>
+                  </div>
+                  <h6 class="fw-bold mb-1">I am a Parent</h6>
+                  <p class="text-muted small mb-0">Looking for trusted, verified childcare</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 text-center cursor-pointer role-card" id="roleCardCaregiver" onclick="selectRole('caregiver')" style="cursor: pointer;">
+                  <div class="stat-icon bg-secondary-light text-secondary mx-auto mb-2" style="width: 44px; height: 44px;">
+                    <i class="bi bi-shield-check fs-4"></i>
+                  </div>
+                  <h6 class="fw-bold mb-1">I am a Caregiver</h6>
+                  <p class="text-muted small mb-0">Offering childcare & professional nanny services</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form onsubmit="handleRegister(event)">
+              <input type="hidden" id="registerRole" value="parent">
+
+              <h5 class="fw-bold border-bottom pb-2 mb-3 text-dark">Personal Information</h5>
+              
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" placeholder="e.g. Jessica" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" placeholder="e.g. Miller" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" placeholder="jessica@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" placeholder="(555) 000-0000" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">City / Region</label>
+                  <input type="text" class="form-control" placeholder="e.g. New York, NY" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Postal / Zip Code</label>
+                  <input type="text" class="form-control" placeholder="10001" required>
+                </div>
+              </div>
+
+              <!-- PARENT SPECIFIC SECTION -->
+              <div id="parentFields">
+                <h5 class="fw-bold border-bottom pb-2 my-3 text-dark">Childcare Details</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Number of Children</label>
+                    <select class="form-select">
+                      <option selected>1 Child</option>
+                      <option>2 Children</option>
+                      <option>3+ Children</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Primary Child Age</label>
+                    <select class="form-select">
+                      <option>Infant (0-1 yr)</option>
+                      <option selected>Toddler (1-3 yrs)</option>
+                      <option>Preschool (3-5 yrs)</option>
+                      <option>School Age (6+ yrs)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Special Needs or Medical Considerations (Optional)</label>
+                  <textarea class="form-control" rows="2" placeholder="e.g. Peanut allergy, Asthma, Autism spectrum support..."></textarea>
+                </div>
+              </div>
+
+              <!-- CAREGIVER SPECIFIC SECTION -->
+              <div id="caregiverFields" style="display: none;">
+                <h5 class="fw-bold border-bottom pb-2 my-3 text-dark">Professional Qualifications</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Years of Childcare Experience</label>
+                    <select class="form-select">
+                      <option>1 - 2 Years</option>
+                      <option selected>3 - 5 Years</option>
+                      <option>5 - 10 Years</option>
+                      <option>10+ Years</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Hourly Rate ($ / hour)</label>
+                    <input type="number" class="form-control" placeholder="25" min="15" max="100">
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Childcare Skills & Certifications</label>
+                  <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="cpr" checked>
+                      <label class="form-check-label small" for="cpr">Pediatric CPR / First Aid</label>
+                    </div>
+                    <div class="form-check ms-3">
+                      <input class="form-check-input" type="checkbox" id="infant" checked>
+                      <label class="form-check-label small" for="infant">Infant Care</label>
+                    </div>
+                    <div class="form-check ms-3">
+                      <input class="form-check-input" type="checkbox" id="special">
+                      <label class="form-check-label small" for="special">Special Needs Support</label>
+                    </div>
+                    <div class="form-check ms-3">
+                      <input class="form-check-input" type="checkbox" id="tutor">
+                      <label class="form-check-label small" for="tutor">Homework Tutoring</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h5 class="fw-bold border-bottom pb-2 my-3 text-dark">Security</h5>
+              
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label">Create Password</label>
+                  <input type="password" class="form-control" placeholder="Min. 8 characters" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" placeholder="Repeat password" required>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="termsCheck" required checked>
+                <label class="form-check-label text-muted small" for="termsCheck">
+                  I agree to CareNest's <a href="#" class="text-primary">Terms of Service</a>, <a href="#" class="text-primary">Privacy Policy</a>, and consent to identity verification protocols.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold shadow-sm" id="registerBtn">
+                <i class="bi bi-check-circle-fill me-2"></i>Create Parent Account
+              </button>
+            </form>
+
+            <div class="text-center mt-4 text-muted small">
+              Already have an account? <a href="login.html" class="text-primary fw-semibold text-decoration-none">Sign in here</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="carenest-footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        <div class="col-lg-4 col-md-6">
+          <a class="carenest-brand text-white d-inline-flex mb-3" href="index.html">
+            <i class="bi bi-heart-pulse-fill text-primary"></i>
+            <span>Care<span class="text-secondary">Nest</span></span>
+          </a>
+          <p class="text-muted small pe-lg-4 mb-4">
+            CareNest is an AI-powered smart childcare platform connecting trusted, background-verified caregivers with caring parents through intelligent recommendation and verified reviews.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Platform</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="about.html" class="text-decoration-none">About Us</a></li>
+            <li><a href="features.html" class="text-decoration-none">Features</a></li>
+            <li><a href="how_it_works.html" class="text-decoration-none">How It Works</a></li>
+            <li><a href="contact.html" class="text-decoration-none">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Portals</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="../parent/dashboard.html" class="text-decoration-none">Parent Dashboard</a></li>
+            <li><a href="../caregiver/dashboard.html" class="text-decoration-none">Caregiver Portal</a></li>
+            <li><a href="../admin/dashboard.html" class="text-decoration-none">Admin Panel</a></li>
+            <li><a href="register.html" class="text-decoration-none">Join as Caregiver</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Stay Updated</h5>
+          <p class="small text-muted mb-3">Subscribe to safety guides and childcare parenting tips.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed', 'Thank you for subscribing to CareNest updates!', 'success');" class="input-group mb-3">
+            <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+            <button class="btn btn-primary btn-sm" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-muted">
+        <div>&copy; 2026 CareNest Platform. All rights reserved.</div>
+        <div class="d-flex gap-3 small">
+          <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+
+  <script>
+    // Read query parameter if specified e.g. register.html?role=caregiver
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const role = urlParams.get('role');
+      if (role === 'caregiver') {
+        selectRole('caregiver');
+      }
+    });
+
+    function selectRole(role) {
+      document.getElementById('registerRole').value = role;
+      const cardParent = document.getElementById('roleCardParent');
+      const cardCaregiver = document.getElementById('roleCardCaregiver');
+      const parentFields = document.getElementById('parentFields');
+      const caregiverFields = document.getElementById('caregiverFields');
+      const registerBtn = document.getElementById('registerBtn');
+
+      if (role === 'parent') {
+        cardParent.classList.add('border-primary', 'bg-light');
+        cardCaregiver.classList.remove('border-secondary', 'bg-light');
+        parentFields.style.display = 'block';
+        caregiverFields.style.display = 'none';
+        registerBtn.className = 'btn btn-primary btn-lg w-100 fw-bold shadow-sm';
+        registerBtn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Create Parent Account';
+      } else {
+        cardCaregiver.classList.add('border-secondary', 'bg-light');
+        cardParent.classList.remove('border-primary', 'bg-light');
+        parentFields.style.display = 'none';
+        caregiverFields.style.display = 'block';
+        registerBtn.className = 'btn btn-secondary btn-lg w-100 fw-bold shadow-sm';
+        registerBtn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Create Caregiver Account';
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const role = document.getElementById('registerRole').value;
+      showToast('Account Created', `Welcome to CareNest! Loading your ${role.toUpperCase()} setup...`, 'success');
+      
+      setTimeout(() => {
+        if (role === 'parent') {
+          window.location.href = '../parent/child_requirements.html';
+        } else {
+          window.location.href = '../caregiver/verification_documents.html';
+        }
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
