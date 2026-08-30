@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caregiver Reviews & Ratings - CareNest</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar Header -->
+  <header class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-2 px-3 shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-light d-lg-none me-2" id="sidebarToggle" type="button">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <a class="navbar-brand carenest-brand me-4" href="../public/index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+
+      <div class="d-flex align-items-center ms-auto gap-3">
+        <span class="badge bg-success-light text-success d-none d-sm-inline-flex align-items-center gap-1 px-3 py-2 rounded-pill">
+          <i class="bi bi-shield-check"></i> Caregiver Portal
+        </span>
+
+        <div class="dropdown">
+          <button class="btn btn-light d-flex align-items-center gap-2 border rounded-pill px-2 py-1" data-bs-toggle="dropdown">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+            <span class="fw-semibold small d-none d-md-inline">Sarah Jenkins</span>
+            <i class="bi bi-chevron-down small text-muted"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="verification_status.html"><i class="bi bi-shield-check me-2"></i>Verification Status</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item py-2 text-danger" href="../public/login.html"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="small text-uppercase fw-bold text-muted px-3 mb-2">Overview</div>
+      <a href="dashboard.html" class="nav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="profile.html" class="nav-item"><i class="bi bi-person-badge"></i> Profile Details</a>
+      <a href="skills.html" class="nav-item"><i class="bi bi-award"></i> Skills & Certs</a>
+      <a href="experience.html" class="nav-item"><i class="bi bi-briefcase"></i> Experience</a>
+      <a href="languages.html" class="nav-item"><i class="bi bi-translate"></i> Languages</a>
+      <a href="location.html" class="nav-item"><i class="bi bi-geo-alt"></i> Service Radius</a>
+      <a href="availability.html" class="nav-item"><i class="bi bi-calendar-week"></i> Availability</a>
+      
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Verification & Safety</div>
+      <a href="verification_documents.html" class="nav-item"><i class="bi bi-file-earmark-arrow-up"></i> Upload Documents</a>
+      <a href="verification_status.html" class="nav-item"><i class="bi bi-patch-check"></i> Verification Status</a>
+
+      <div class="small text-uppercase fw-bold text-muted px-3 mt-3 mb-2">Bookings & Reviews</div>
+      <a href="booking_requests.html" class="nav-item"><i class="bi bi-inbox-fill text-warning"></i> Requests (2)</a>
+      <a href="my_bookings.html" class="nav-item"><i class="bi bi-calendar-check"></i> My Schedule</a>
+      <a href="reviews.html" class="nav-item active"><i class="bi bi-star"></i> Reviews & Ratings</a>
+
+      <div class="mt-auto pt-3 border-top">
+        <a href="../public/index.html" class="nav-item text-muted"><i class="bi bi-arrow-left-circle"></i> Public Home</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <div class="container-fluid p-0 max-w-1000">
+        
+        <!-- Header Card -->
+        <div class="carenest-card p-4 mb-4 bg-white">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <h3 class="fw-bold mb-0">Ratings & Parent Feedback</h3>
+                <span class="badge bg-primary-light text-primary fw-bold px-3 py-1 rounded-pill small"><i class="bi bi-shield-check me-1"></i>100% Genuine Reviews</span>
+              </div>
+              <p class="text-muted small mb-0">Feedback submitted by verified parents following completed care sessions.</p>
+            </div>
+            <a href="../parent/caregiver_profile.html" class="btn btn-outline-primary btn-sm px-3" target="_blank">
+              <i class="bi bi-eye me-1"></i>View Public Rating
+            </a>
+          </div>
+        </div>
+
+        <!-- Rating Analytics Summary Grid -->
+        <div class="row g-4 mb-4">
+          
+          <!-- Overall Rating -->
+          <div class="col-md-5">
+            <div class="carenest-card p-4 bg-white text-center h-100 d-flex flex-column justify-content-center">
+              <h1 class="display-3 fw-bold text-dark mb-0">4.9</h1>
+              <div class="star-rating fs-4 my-2 justify-content-center">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <span class="text-muted small">Based on 48 verified parent bookings</span>
+            </div>
+          </div>
+
+          <!-- Rating Breakdown Progress Bars -->
+          <div class="col-md-7">
+            <div class="carenest-card p-4 bg-white h-100">
+              <h6 class="fw-bold mb-3">Category Breakdown</h6>
+              
+              <div class="mb-2">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span>Punctuality & Reliability</span>
+                  <span class="fw-bold text-dark">5.0 / 5.0</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar bg-success" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span>Child Safety & Attention</span>
+                  <span class="fw-bold text-dark">5.0 / 5.0</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar bg-success" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span>Allergy & Medical Protocols</span>
+                  <span class="fw-bold text-dark">4.9 / 5.0</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar bg-primary" style="width: 98%;"></div>
+                </div>
+              </div>
+
+              <div class="mb-0">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span>Parent Communication</span>
+                  <span class="fw-bold text-dark">4.8 / 5.0</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar bg-primary" style="width: 96%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Parent Reviews Feed -->
+        <h5 class="fw-bold mb-3"><i class="bi bi-chat-heart-fill me-2 text-danger"></i>Recent Parent Reviews</h5>
+        <div class="d-flex flex-column gap-3 mb-4">
+          
+          <!-- Review Card 1 -->
+          <div class="carenest-card p-4 bg-white">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Amanda H." class="rounded-circle" width="44" height="44">
+                <div>
+                  <h6 class="fw-bold mb-0">Amanda Henderson</h6>
+                  <small class="text-muted">Parent of 2 yr old • Session on July 14, 2026</small>
+                </div>
+              </div>
+              <span class="badge-verified"><i class="bi bi-check2-circle"></i> Genuine (99.4% NLP Score)</span>
+            </div>
+
+            <div class="star-rating mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="small text-muted mb-3">
+              "Sarah was punctual, extremely warm with our toddler Liam, and took meticulous notes about his peanut allergy precautions. We felt 100% comfortable leaving Liam in her care!"
+            </p>
+
+            <!-- Caregiver Published Reply -->
+            <div class="p-3 bg-light rounded-3 border-start border-primary border-3 ms-4 small">
+              <div class="fw-bold text-dark mb-1"><i class="bi bi-reply-fill me-1 text-primary"></i>Your Reply:</div>
+              <p class="text-muted mb-0">"Thank you Amanda! Liam was an absolute joy to care for and we had so much fun with his sensory coloring books. Look forward to next time!"</p>
+            </div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div class="carenest-card p-4 bg-white">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Robert T." class="rounded-circle" width="44" height="44">
+                <div>
+                  <h6 class="fw-bold mb-0">Robert Taylor</h6>
+                  <small class="text-muted">Parent of 1 yr old • Session on June 22, 2026</small>
+                </div>
+              </div>
+              <span class="badge-verified"><i class="bi bi-check2-circle"></i> Genuine (98.7% NLP Score)</span>
+            </div>
+
+            <div class="star-rating mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p class="small text-muted mb-3">
+              "Exceptional caregiver. She engaged our baby with soothing sensory play and left detailed logs of feedings and diaper changes. Highly recommended!"
+            </p>
+
+            <button class="btn btn-outline-primary btn-sm ms-4" data-bs-toggle="modal" data-bs-target="#replyModal">
+              <i class="bi bi-reply me-1"></i>Reply to Robert
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Reply Modal -->
+  <div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Reply to Robert Taylor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body py-3">
+          <form onsubmit="event.preventDefault(); showToast('Reply Published', 'Your response is now publicly visible on your profile.', 'success'); bootstrap.Modal.getInstance(document.getElementById('replyModal')).hide();">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Your Public Response</label>
+              <textarea class="form-control" rows="4" placeholder="Thank the parent and share your appreciation..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 fw-bold">Publish Response</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
