@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features - CareNest Intelligent Childcare</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CareNest CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg carenest-navbar py-3">
+    <div class="container">
+      <a class="navbar-brand carenest-brand" href="index.html">
+        <i class="bi bi-heart-pulse-fill text-primary"></i>
+        <span>Care<span class="text-secondary">Nest</span></span>
+      </a>
+      
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#careNestNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="careNestNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="how_it_works.html">How It Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Portals</a>
+            <ul class="dropdown-menu shadow-sm border-0 rounded-3">
+              <li><a class="dropdown-item py-2" href="../parent/dashboard.html"><i class="bi bi-person-heart text-primary me-2"></i>Parent Portal</a></li>
+              <li><a class="dropdown-item py-2" href="../caregiver/dashboard.html"><i class="bi bi-shield-check text-success me-2"></i>Caregiver Portal</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item py-2" href="../admin/dashboard.html"><i class="bi bi-speedometer2 text-danger me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="login.html" class="btn btn-outline-primary btn-sm px-3">Sign In</a>
+          <a href="register.html" class="btn btn-primary btn-sm px-3">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero-section text-center py-5">
+      <div class="container py-3">
+        <span class="badge bg-white text-primary border shadow-sm px-3 py-2 rounded-pill fw-semibold mb-3">AI & Safety Capabilities</span>
+        <h1 class="hero-title">Powered by Modern AI, Built for Child Safety</h1>
+        <p class="hero-subtitle mx-auto">
+          Explore the innovative algorithms and safety tools that make CareNest the most reliable childcare solution for parents and professionals.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section class="py-5 bg-white">
+      <div class="container py-4">
+        
+        <!-- Feature 1: AI Hybrid Recommendation -->
+        <div class="row align-items-center g-5 mb-5 pb-4">
+          <div class="col-lg-6">
+            <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill fw-bold mb-2">Algorithm 5.1 & 5.2</span>
+            <h2 class="fw-bold mb-3">Hybrid AI Recommendation Engine</h2>
+            <p class="text-muted">
+              Never waste time guessing compatibility. Our recommendation system solves both feature alignment and historical trust:
+            </p>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+                <div><strong>Content-Based Matching:</strong> Compares child age, special needs requirements, caregiver experience, language, and budget.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+                <div><strong>Collaborative Filtering:</strong> Analyzes verified parent feedback patterns to suggest top-satisfaction caregivers.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-check-circle-fill text-primary mt-1"></i>
+                <div><strong>Compatibility Scores:</strong> Clear match breakdown percentages showing exactly why a caregiver fits your family.</div>
+              </li>
+            </ul>
+            <a href="../parent/search.html" class="btn btn-primary">Try Caregiver Search</a>
+          </div>
+          <div class="col-lg-6">
+            <div class="carenest-card p-4 p-md-5 bg-light border-0 shadow-sm">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0">AI Match Breakdown</h5>
+                <span class="badge bg-success text-white px-3 py-1 rounded-pill">96% Match</span>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between small mb-1">
+                  <span>Special Needs Compatibility</span>
+                  <span class="fw-bold text-success">100%</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-success" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between small mb-1">
+                  <span>Location Proximity (< 3 miles)</span>
+                  <span class="fw-bold text-primary">95%</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-primary" style="width: 95%;"></div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between small mb-1">
+                  <span>Budget Compatibility</span>
+                  <span class="fw-bold text-primary">90%</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-primary" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="p-3 bg-white rounded-3 border small text-muted">
+                <i class="bi bi-info-circle text-primary me-1"></i> Match reasons: Speaks required languages, holds Pediatric CPR, and matches toddler schedule.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Fake Review Detection -->
+        <div class="row align-items-center g-5 mb-5 pb-4 flex-lg-row-reverse">
+          <div class="col-lg-6">
+            <span class="badge bg-danger-light text-danger px-3 py-2 rounded-pill fw-bold mb-2">NLP Security</span>
+            <h2 class="fw-bold mb-3">AI-Assisted Fake Review Detection</h2>
+            <p class="text-muted">
+              Ratings can make or break trust. CareNest uses Machine Learning and Natural Language Processing to inspect review authenticity:
+            </p>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-shield-check text-danger mt-1"></i>
+                <div><strong>Sentiment & Linguistic Analysis:</strong> Preprocessing, TF-IDF vectorization, and scikit-learn classification models.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-shield-check text-danger mt-1"></i>
+                <div><strong>Automated Suspicious Flagging:</strong> Flags abnormal review bursts or duplicate phrasing for admin moderation.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-shield-check text-danger mt-1"></i>
+                <div><strong>Verified Booking Badge:</strong> Only parents with confirmed, completed bookings can leave verified reviews.</div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="carenest-card p-4 bg-light border-0 shadow-sm">
+              <div class="carenest-card p-3 bg-white mb-3 shadow-sm border-start border-success border-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="fw-bold">Parent Review #1042</span>
+                  <span class="badge-verified"><i class="bi bi-check-circle-fill"></i> Genuine (99.2%)</span>
+                </div>
+                <p class="small text-muted mb-0">"Sarah was incredible with our 2-year-old son. Punctual, warm, and highly skilled in allergy precautions."</p>
+              </div>
+              <div class="carenest-card p-3 bg-white shadow-sm border-start border-danger border-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="fw-bold">Flagged Anomaly</span>
+                  <span class="badge-suspicious"><i class="bi bi-exclamation-triangle-fill"></i> Suspicious Pattern</span>
+                </div>
+                <p class="small text-muted mb-0">"Best best best good best service fast book now best..."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: 24/7 NLP Chatbot -->
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="badge bg-secondary-light text-secondary px-3 py-2 rounded-pill fw-bold mb-2">Smart Assistant</span>
+            <h2 class="fw-bold mb-3">24/7 NLP Childcare & Platform Chatbot</h2>
+            <p class="text-muted">
+              Get answers anytime without waiting on support queues. Our intelligent chatbot is trained on comprehensive knowledge bases:
+            </p>
+            <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-robot text-secondary mt-1"></i>
+                <div><strong>Instant Intent Recognition:</strong> Answers questions about booking, background verification rules, rates, and policies.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-robot text-secondary mt-1"></i>
+                <div><strong>Childcare & Safety FAQs:</strong> Emergency guidelines, preparation checklists for first-time parents.</div>
+              </li>
+              <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-robot text-secondary mt-1"></i>
+                <div><strong>Admin Dynamic Knowledge Base:</strong> Admins can add or update FAQs instantly in real time.</div>
+              </li>
+            </ul>
+            <a href="../parent/chatbot.html" class="btn btn-secondary">Open AI Assistant Demo</a>
+          </div>
+          <div class="col-lg-6">
+            <!-- Simulated Chatbot UI -->
+            <div class="carenest-card p-4 shadow-sm bg-white">
+              <div class="d-flex align-items-center gap-3 border-bottom pb-3 mb-3">
+                <div class="stat-icon bg-primary-light text-primary rounded-circle" style="width:42px; height:42px;">
+                  <i class="bi bi-robot"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0">CareNest Assistant</h6>
+                  <span class="text-success small"><i class="bi bi-dot"></i> Active 24/7</span>
+                </div>
+              </div>
+              <div class="d-flex flex-column gap-3 mb-3" style="max-height: 220px; overflow-y: auto;">
+                <div class="p-3 bg-light rounded-3 text-dark small align-self-start max-w-80">
+                  Hello! How can I help you find safe childcare today?
+                </div>
+                <div class="p-3 bg-primary text-white rounded-3 small align-self-end max-w-80">
+                  How does CareNest verify caregiver criminal backgrounds?
+                </div>
+                <div class="p-3 bg-light rounded-3 text-dark small align-self-start max-w-80">
+                  Every caregiver must submit government ID and pass national criminal registry checks before approval by our admin team!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Platform Comparison Table -->
+    <section class="py-5 bg-light border-top">
+      <div class="container py-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+          <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill fw-bold">Comparison</span>
+          <h2 class="fw-bold mt-2">Why CareNest Outperforms Generic Classifieds</h2>
+        </div>
+
+        <div class="table-responsive carenest-card p-4 bg-white shadow-sm">
+          <table class="table align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col" class="py-3">Feature Capability</th>
+                <th scope="col" class="py-3 text-center text-primary fw-bold">CareNest Platform</th>
+                <th scope="col" class="py-3 text-center text-muted">Traditional Directories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-semibold">AI Hybrid Recommendation</td>
+                <td class="text-center text-success fs-5"><i class="bi bi-check-circle-fill"></i></td>
+                <td class="text-center text-danger fs-5"><i class="bi bi-x-circle-fill"></i></td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Mandatory Background Document Screening</td>
+                <td class="text-center text-success fs-5"><i class="bi bi-check-circle-fill"></i></td>
+                <td class="text-center text-warning fs-5"><i class="bi bi-dash-circle-fill"></i> (Optional/Fee)</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">NLP Fake Review Detection</td>
+                <td class="text-center text-success fs-5"><i class="bi bi-check-circle-fill"></i></td>
+                <td class="text-center text-danger fs-5"><i class="bi bi-x-circle-fill"></i></td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Real-Time Availability Scheduling</td>
+                <td class="text-center text-success fs-5"><i class="bi bi-check-circle-fill"></i></td>
+                <td class="text-center text-muted small">Manual Phone/Email</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">24/7 Childcare NLP Chatbot</td>
+                <td class="text-center text-success fs-5"><i class="bi bi-check-circle-fill"></i></td>
+                <td class="text-center text-danger fs-5"><i class="bi bi-x-circle-fill"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="carenest-footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        <div class="col-lg-4 col-md-6">
+          <a class="carenest-brand text-white d-inline-flex mb-3" href="index.html">
+            <i class="bi bi-heart-pulse-fill text-primary"></i>
+            <span>Care<span class="text-secondary">Nest</span></span>
+          </a>
+          <p class="text-muted small pe-lg-4 mb-4">
+            CareNest is an AI-powered smart childcare platform connecting trusted, background-verified caregivers with caring parents through intelligent recommendation and verified reviews.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Platform</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="about.html" class="text-decoration-none">About Us</a></li>
+            <li><a href="features.html" class="text-decoration-none">Features</a></li>
+            <li><a href="how_it_works.html" class="text-decoration-none">How It Works</a></li>
+            <li><a href="contact.html" class="text-decoration-none">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-3">
+          <h5>Portals</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="../parent/dashboard.html" class="text-decoration-none">Parent Dashboard</a></li>
+            <li><a href="../caregiver/dashboard.html" class="text-decoration-none">Caregiver Portal</a></li>
+            <li><a href="../admin/dashboard.html" class="text-decoration-none">Admin Panel</a></li>
+            <li><a href="register.html" class="text-decoration-none">Join as Caregiver</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Stay Updated</h5>
+          <p class="small text-muted mb-3">Subscribe to safety guides and childcare parenting tips.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed', 'Thank you for subscribing to CareNest updates!', 'success');" class="input-group mb-3">
+            <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+            <button class="btn btn-primary btn-sm" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-muted">
+        <div>&copy; 2026 CareNest Platform. All rights reserved.</div>
+        <div class="d-flex gap-3 small">
+          <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
